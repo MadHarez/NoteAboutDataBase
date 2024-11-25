@@ -1,11 +1,3 @@
-```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
 ## SQL简介
 SQL（Structured Query Language，结构化查询语言）是一种用于管理和查询数据库的标准编程语言。它最初由IBM的唐纳德·D·张伯尔（Donald D. Chamberlin）和雷·F·博伊斯（Raymond F. Boyce）在1970年代中期开发。SQL的设计目标是提供一种统一的方法来访问和操作关系数据库管理系统（RDBMS）。 历史
 

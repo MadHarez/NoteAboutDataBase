@@ -1,12 +1,3 @@
-```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
-
 ## 什么是数据库应用系统？数据库系统的应用领域
 
 数据库应用系统是指利用数据库管理系统（DBMS）来存储、管理和检索数据的计算机系统。它通常包括以下几个主要组成部分：

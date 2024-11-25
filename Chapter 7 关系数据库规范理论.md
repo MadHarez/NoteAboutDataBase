@@ -1,11 +1,3 @@
-```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
 ## 关系数据库
 关系数据库（Relational Database）是一种基于关系模型的数据库，它通过表格的形式存储数据，每个表格由行（记录）和列（字段）组成。关系数据库管理系统（RDBMS）是管理这种数据库的软件，它允许用户创建、查询、更新和管理数据。以下是关系数据库的一些关键概念和特性：
 

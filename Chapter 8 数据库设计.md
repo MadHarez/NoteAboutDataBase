@@ -1,11 +1,3 @@
-```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
 ## 数据库设计概述
 ### 软件工程
 - 1. **提升数据库可行性研究**：软件工程技术能够结合计算机技术与人工控制技术，提升数据库的经济效益、实用性与操作性。它有助于加强数据库可行性的相关研究，以便更快地分析数据结果。

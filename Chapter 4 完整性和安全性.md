@@ -1,11 +1,3 @@
-```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
 ## 数据的完整性
 ### 何为数据库的完整性：
 ==**由DBMS而不是用户程序自动检察数据的一致性、相容性，保证数据的符合完整性约束条件**==

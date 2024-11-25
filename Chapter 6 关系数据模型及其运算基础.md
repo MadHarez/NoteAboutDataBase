@@ -1,11 +1,3 @@
-```table-of-contents
-title: 
-style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
-minLevel: 0 # Include headings from the specified level
-maxLevel: 0 # Include headings up to the specified level
-includeLinks: true # Make headings clickable
-debugInConsole: false # Print debug info in Obsidian console
-```
 ## 关系数据模型
 关系模型（Relational Model）是一种数据模型，它基于关系数据库理论，用于组织和管理结构化数据。这种模型将数据表示为一系列表（或称为关系），每个表由行（或称为元组）和列（或称为属性）组成。
 关系模型是由E.F. Codd在1970年提出的，它基于集合论和逻辑学，为关系数据库管理系统（RDBMS）提供了理论基础。关系模型的主要优点包括数据结构简单、易于理解，以及强大的查询能力。它也是现代数据库系统中最广泛使用的数据模型之一。
