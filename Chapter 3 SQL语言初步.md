@@ -869,6 +869,12 @@ SELECT column_name FROM table2;
 ```
 
 `UNION`操作符用于合并两个查询结果集，自动去除重复行。
+在不同数据库下排序不同。
+这里举出常见的例子：
+1. **PostgreSQL、Oracle**：这些数据库属于`null最大派`，在排序时认为`NULL`值最大，升序时排在最后。
+    
+2. **MySQL、SQL Server**：这些数据库属于`null最小派`，在排序时认为`NULL`值最小，升序时排在最前
+因此`Order by NULL`得到的结果不同
 
 ##### - **交操作（INTERSECT）**：
 
@@ -943,9 +949,25 @@ WHERE condition;
 ```
 
 - `WITH ENCRYPTION`：指定视图的定义不能被查看，但可以被使用。
+	- - 这个选项用于保护视图的定义不被查看。当视图被创建时，如果使用了 `WITH ENCRYPTION`，那么即使有权限查看数据库定义的用户也无法查看视图的具体定义。这增加了一层安全性，尤其是在多用户环境中，可以防止敏感的查询逻辑被轻易查看或修改。
+	- 语法示例：
+    ```sql
+    CREATE VIEW view_name WITH ENCRYPTION AS
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition;
+    ```
 - `WITH CHECK OPTION`：确保对视图进行的INSERT、UPDATE和DELETE操作满足视图的定义条件。
+	- - 这个选项确保对视图进行的 `INSERT`、`UPDATE` 和 `DELETE` 操作满足视图的定义条件。如果没有这个选项，用户可能通过视图插入或更新数据，这些数据在视图中不可见，但在基础表中是存在的，这可能导致数据不一致。
+	- 语法示例：
+    ```sql
+    CREATE VIEW view_name WITH CHECK OPTION AS
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition;
+    ```
 
-#### 管理视图
+#### 管理视图(SQL Server独有的存储过程)
 
 - **显示视图信息**：
     
