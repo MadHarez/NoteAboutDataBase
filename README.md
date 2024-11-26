@@ -1,10 +1,16 @@
 # NoteAboutDataBase
 Author：MadHarez 
+
 [MadHarez (ManiacHarez)](https://github.com/MadHarez)
+
 Co-author：Potmot
+
 [pot-mot (pot-mot)](https://github.com/pot-mot)
+
 Director：GDLoery
+
 [GDleroy](https://github.com/GDleroy)
+
 Some instructions on getting started with databases
 
 This is a folder about obsidian. If you want to use it in a better area, please download obsidian.
