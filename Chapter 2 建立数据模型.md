@@ -552,70 +552,13 @@ classDiagram
 - 确保数据库中数据的正确性、有效性和一致性的规则集合。完整性约束包括实体完整性、参照完整性、域完整性等，它们定义了数据必须满足的条件，以保证数据的准确性和可靠性。
 
 ## 关系模型
-### 关系模式
-**一个关系的静态描述（关系名及其全部属性名的集合）。**
-**二维表的表头那一行称为关系模式，又称表的框架或记录类型。 是记录的型，决定二位表的内容。每一个关系模式都必须命名，且同一关系模型不允许相同。 每一个关系模式都由一些属性组成，关系模式的属性名通常取自相关试题类型的属性名。 对我的文本进行补充**
-**关系模式（Relational Schema）是关系数据库中用来描述数据库中关系（表）的结构的一种方式。它定义了表的名称、表中各属性（列）的名称、属性的数据类型以及属性之间的一些约束条件，如主键（Primary Key）、外键（Foreign Key）和唯一性约束（Unique Constraint）等。**
-关系模式通常包含以下信息：
-1.  表名（Table Name）：关系（表）的名称。
-2.  属性（Attributes）：表中的列，每个属性都有一个名称和数据类型。
-3.  域（Domain）：属性可能取值的范围，即数据类型。
-4.  主键（Primary Key）：能够唯一标识表中每一行（元组）的属性或属性组合。
-5.  外键（Foreign Key）：一个表中的属性，它对应于另一个表的主键，用于表示两个表之间的关系。
-6.  约束（Constraints）：如唯一性约束、非空约束（Not Null）、检查约束（Check Constraint）等，用于确保数据的完整性和准确性。
-**实例**
-假设我们有一个大学管理系统，其中包含学生、课程和选课信息。我们可以定义以下关系模式：
-1.  学生表（Student）
-•  表名：Student
-•  属性：
-•  StudentID (INT, 主键)
-•  Name (VARCHAR)
-•  Age (INT)
-•  Department (VARCHAR)
-2.  课程表（Course）
-•  表名：Course
-•  属性：
-•  CourseID (INT, 主键)
-•  Title (VARCHAR)
-•  Credits (INT)
-3.  选课表（Enrollment）
-•  表名：Enrollment
-•  属性：
-•  EnrollmentID (INT, 主键)
-•  StudentID (INT, 外键，引用Student表的StudentID)
-•  CourseID (INT, 外键，引用Course表的CourseID)
-•  Grade (VARCHAR)
-在这个例子中，每个表都有一个主键，用于唯一标识表中的每条记录。选课表（Enrollment）通过StudentID和CourseID两个外键与学生表（Student）和课程表（Course）相联系，形成了一个多对多的关系。这样的关系模式定义了数据库的结构，使得数据的存储和查询更加有序和高效。
-关系模式可以表示为一个三元组，通常写作：
- \text{关系模式} = (E, D, DOM, F) 
-其中：
-•   E  是关系名，即关系模式的名称，代表了一个实体或实体间的关系。
-•   D  是属性名的集合，即关系模式中所有属性的集合。
-•   DOM  是属性到域的映射，定义了每个属性可以取值的范围，即属性的数据类型。
-•   F  是属性之间的约束条件的集合，包括但不限于：
-•  主键约束（Primary Key Constraint）：唯一标识表中每条记录的属性或属性组合。
-•  外键约束（Foreign Key Constraint）：用于建立两个关系之间的联系，指向另一个关系的主键。
-•  唯一性约束（Unique Constraint）：确保列中的所有值都是唯一的。
-•  非空约束（Not Null Constraint）：确保列中的值不能为NULL。
-•  检查约束（Check Constraint）：确保列中的值满足特定的条件。
-例如，如果我们有一个学生选课系统，可以定义如下的关系模式：
-1.  学生（Student）关系模式：
- (Student, \{StudentID, Name, Age, Department\}, \{StudentID \rightarrow INT, Name \rightarrow VARCHAR, Age \rightarrow INT, Department \rightarrow VARCHAR\}, \{StudentID \text{ is primary key}\}) 
-2.  课程（Course）关系模式：
- (Course, \{CourseID, Title, Credits\}, \{CourseID \rightarrow INT, Title \rightarrow VARCHAR, Credits \rightarrow INT\}, \{CourseID \text{ is primary key}\}) 
-3.  选课（Enrollment）关系模式：
- (Enrollment, \{EnrollmentID, StudentID, CourseID, Grade\}, \{EnrollmentID \rightarrow INT, StudentID \rightarrow INT, CourseID \rightarrow INT, Grade \rightarrow VARCHAR\}, \{EnrollmentID \text{ is primary key}, StudentID \text{ references } Student, CourseID \text{ references } Course\}) 
-在这个例子中，每个关系模式都明确了实体的名称、属性集合、属性的域以及属性之间的约束条件。这些信息共同定义了数据库的结构和数据的组织方式。
-
+### 关系模型的基本概念
 
 #### 关系(Relation)
 •  定义：对应于关系模式的一个具体的表称为关系，又称表(Table)。
 •  关系数据库：是若干表（关系）的集合。
 •  关系模式：决定其对应关系的内容。
 •  命名规则：每一个关系都必须命名（通常取对应的关系模式名），且同一关系数据模型中关系名互不相同。
-#### 关系模式与关系的联系：
-•  关系模式：型（关系的结构），相对稳定。
-•  关系：值（元组的集合），随时间变化。
 #### 元组(Tuple)
 •  定义：关系中的每一行称为关系的一个元组，又称行(Row)或记录。
 •  构成：一个关系可由多个元组构成。
@@ -666,19 +609,63 @@ D_1 \times D_2 = \{(Alice, Math), (Alice, Science), (Alice, History), (Bob, Math
 •  关系 是笛卡尔积的一个子集，它基于实际的数据和特定的约束条件（在这个例子中是学生实际选的课程）来选择笛卡尔积中的元素。
 在这个例子中，关系  R(D_1, D_2)  是从笛卡尔积  D_1 \times D_2  中筛选出来的，只包括那些符合特定条件（学生实际选课情况）的元组。这种筛选过程体现了关系数据库中数据的组织和查询方式，即从可能的所有组合中提取出有意义的数据子集。
 
-### 关系模式中关系的六条性质
+### 关系模式与关系的联系：
+
+•  [[#关系模型]]：型（关系的结构），相对稳定。
+•  [[#关系(Relation)]]：值（元组的集合），随时间变化。
+
+### 关系模式
+
+#### 关系模式的基本概念
+**关系模式（Relational Schema）是关系数据库中用来描述数据库中关系（表）的结构的一种方式。它是关系数据库理论中的一个基本概念，用于定义表的名称、列（属性）的名称、数据类型以及列之间的约束条件。**
+
+#####  **关系名（Relation Name）**：
+- 每个关系模式都有一个唯一的名称，用来标识数据库中的一个特定表。
+##### **属性（Attribute）**：
+- 属性是关系模式中的列，代表表中的一个字段。
+- 每个属性都有名称和数据类型，定义了可以存储的数据的种类。
+##### **域（Domain）**：
+- 域定义了属性可能取值的范围，即数据类型。
+- 例如，一个属性的域可以是整数（INT）、字符串（VARCHAR）等。
+##### **主键（Primary Key）**：
+    
+    - 主键是表中的一个或多个属性的组合，用于唯一标识表中的每条记录（元组）。
+    - 主键的值不能为NULL，且在表中必须是唯一的。
+##### 5. **外键（Foreign Key）**：
+    
+    - 外键是表中的一个属性或属性组合，它对应于另一个表的主键。
+    - 外键用于建立两个表之间的关系，确保数据的参照完整性。
+##### 约束（Constraints）
+
+- 约束是一组规则，用于限制可以存储在表中的数据。
+- 包括唯一性约束（`Unique Constraint`）、非空约束（`Not Null Constraint`）、检查约束（`Check Constraint`）等。
+##### 关系模式的结构（Relational Model）
+- 关系模式通常表示为一个四元组：R=(E,D,DOM,F)R=(E,D,DOM,F)。
+	- `EE `是关系名。
+	- `DD `是属性名的集合。
+	- `DOMDOM `是属性到域的映射。
+	- `FF` 是属性之间的约束条件集合。
+##### 元组（Tuple）
+- 元组是关系中的一行，代表一个具体的数据记录。
+- 每个元组包含一组属性值，对应于表中的一行数据。
+##### 9.关系实例（Relation Instance）
+- 关系实例是关系模式在某一时刻的具体内容，包括元组的集合。
+- 实例随时间变化，但模式保持不变。
+
+关系模式是数据库设计阶段的重要概念，它帮助数据库设计者定义和组织数据结构，确保数据的组织和存储方式满足应用需求。通过关系模式，可以清晰地表达数据之间的关系，为数据库的创建、维护和查询提供基础。
+#### 关系模式中关系的六条性质
 通常指的是关系数据库中关系（表）应该满足的一些设计原则，这些原则有助于确保数据库的规范化和数据的一致性。以下是这六条性质的描述：
-#### 1.  原子性（Atomicity）：
+##### 1.  原子性（Atomicity）：
 关系的每个属性都应该不可再分，即属性是原子的。这意味着每个属性只能包含一个值，不能是集合、列表或其他复杂的数据结构。
-#### 2.  唯一性（Uniqueness）：
+##### 2.  唯一性（Uniqueness）：
 关系中的每个元组（行）都应该有一个唯一的标识符，通常通过主键（Primary Key）来实现。主键的值在关系中是唯一的，不能有重复。
-#### 3.  完整性（Integrity）：
+##### 3.  完整性（Integrity）：
 关系中的数据应该满足实体完整性和参照完整性。实体完整性要求主键不能为NULL，参照完整性要求外键的值必须对应于另一个关系中的主键，或者为NULL（如果允许）。
-#### 4.  域约束（Domain Constraints）：
+##### 4.  域约束（Domain Constraints）：
 每个属性的值都必须来自其定义的域，即属性的取值范围。这确保了数据的类型和格式的一致性。
-#### 5.  列的顺序无关性（Column Order Irrelevance）：
+##### 5.  列的顺序无关性（Column Order Irrelevance）：
 在关系中，列（属性）的顺序并不重要。即，无论属性如何排列，关系的含义和数据的存储都不会改变。
-#### 6.  行的顺序无关性（Row Order Irrelevance）：
+##### 6.  行的顺序无关性（Row Order Irrelevance）：
 与列的顺序无关性类似，行（元组）的顺序在关系中也不重要。关系的处理和查询结果不会因为行的顺序不同而有所变化。
 这些性质是关系数据库设计的基础，它们帮助数据库设计者构建一个结构化、规范化且易于维护的数据库系统。通过遵循这些性质，可以减少数据冗余，提高数据的一致性和完整性。
 以下是一个Mermaid图表的代码，描述了关系模式中关系的六条性质：
