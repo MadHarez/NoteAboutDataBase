@@ -295,7 +295,6 @@ DML用于对数据库中的数据进行查询和修改。
     
 - **DELETE**：用于从表中删除数据。
     
-    sql
     
     ```sql
     DELETE FROM Employees
@@ -590,7 +589,7 @@ drop index [index_name] (on [table_name]) index_name
    - 命令：`USE 数据库名`
    - 这个命令用于指定当前的数据库上下文。在执行数据库操作之前，你需要确保你正在操作的是正确的数据库。
 
-#### 创建grademanager数据库
+#### 实例：创建grademanager数据库
 
 以下是创建名为`grademanager`的数据库的具体SQL语句：
 
@@ -623,7 +622,7 @@ LOG ON
 
 这个SQL语句提供了创建数据库时对数据文件和日志文件的详细配置，确保数据库的存储和日志记录按照预期进行。
 
-
+#### 数据库的建立与撤销的语法
 #### 创建表
 
 ```sql

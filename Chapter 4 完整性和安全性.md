@@ -133,28 +133,28 @@
 #### 静态列级约束
 静态列级约束是对一个列的取值域的说明，这是最常见最简单同时也是最容易实现的一类完整性约束
 五类静态列级约束
-1.  数据类型约束（Data Type Constraints）：
+##### 1.  数据类型约束（Data Type Constraints）
 •  定义：确保列中的数据符合特定的数据类型，如整数、字符串、日期等。
 •  实例：假设有一个users表，其中有一个age列，可以定义为INT类型，确保只能插入整数值。
-2.  非空约束（NOT NULL Constraints）：
+##### 2.  非空约束（NOT NULL Constraints）
 •  定义：确保列不能包含NULL值，即该列的每个记录都必须有值。
 •  实例：在users表中，email列可以设置为NOT NULL，这意味着每个用户记录都必须包含一个电子邮件地址。
-3.  唯一性约束（UNIQUE Constraints）：
+##### 3.  唯一性约束（UNIQUE Constraints）
 •  定义：确保列中的所有值都是唯一的，即不允许有重复的值。
 •  实例：在users表中，username列可以设置为UNIQUE，这样每个用户名都是独一无二的，不允许两个用户有相同的用户名。
-4.  主键约束（PRIMARY KEY Constraints）：
+##### 4.  主键约束（PRIMARY KEY Constraints）
 •  定义：主键约束是一种特殊的唯一性约束，它不仅要求列的值是唯一的，还要求它们不能为NULL。
 •  实例：在users表中，user_id列可以设置为主键（PRIMARY KEY），这样每个用户的ID都是唯一的，并且不能为空。
-5.  检查约束（CHECK Constraints）：
+##### 5.  检查约束（CHECK Constraints）
 •  定义：检查约束用于限制列中的数据值必须满足的条件，例如年龄必须大于0，价格必须大于0等。
 •  实例：在orders表中，price列可以设置一个检查约束，如CHECK (price > 0)，确保所有订单的价格都是正数。
 这些静态列级约束在数据库设计和数据管理中起着至关重要的作用，它们帮助数据库管理员和开发者确保数据的准确性和一致性，同时防止无效数据的插入。在实际应用中，这些约束可以单独使用，也可以组合使用，以满足复杂的数据完整性要求。
 
 #### 静态元组约束
 静态元组约束是指在数据库中，对于单个元组（即表中的一行数据）的各个列之间的约束关系。这种约束局限在单个元组上，不涉及元组之间的比较或关系。以下是静态元组约束的定义、相关实例以及需要注意的点：
-定义
+**定义**
 静态元组约束规定了组成一个元组的各个列之间的约束关系，确保元组内的数据在任何时候都满足特定的业务规则或逻辑。
-相关实例
+**相关实例**
 1.  订货关系中的约束：假设有一个订货关系表，包含ID、商品、订货量、发货量等列。可以设置一个静态元组约束，要求每条记录中的发货量不能大于订货量。这可以用CHECK约束实现：
 ```sql
 CREATE TABLE OrderDetails (
@@ -177,7 +177,7 @@ CREATE TABLE Teachers (
 );
 ```
 这个约束确保了所有教授的工资都不会低于7000元。
-需要注意的点
+**需要注意的点**
 1.  性能影响：过多的静态元组约束可能会影响数据库操作的性能，尤其是在数据量大的情况下，因为每次插入或更新数据时都需要检查这些约束。
 2.  可维护性：随着业务逻辑的变更，可能需要调整或删除现有的静态元组约束，这可能需要额外的数据库维护工作。
 3.  数据迁移和同步：在数据迁移或同步过程中，需要确保静态元组约束在新系统中得到适当的处理和应用，以保持数据的一致性。
@@ -190,16 +190,16 @@ CREATE TABLE Teachers (
 
 静态关系约束是指在一个关系的各个元组之间或者若干关系之间存在的各种联系或约束。这些约束是数据库中数据应该满足的语义条件，它们是数据库完整性控制机制的核心。
 以下是常见的静态关系约束及其实例：
-1.  实体完整性约束（Entity Integrity Constraint）：
+##### 1.  实体完整性约束（Entity Integrity Constraint）
 •  定义：确保每个表都有一个主键，并且主键的值不能为空（NOT NULL）。
 •  实例：在students表中，student_id是主键，每个学生的ID都是唯一的，且不能留空。
-2.  参照完整性约束（Referential Integrity Constraint）：
+##### 2.  参照完整性约束（Referential Integrity Constraint）
 •  定义：确保外键的值必须在另一个表的相应列（通常是主键）中存在，或者为NULL。
 •  实例：假设orders表中有一个customer_id列，它是外键，指向customers表的customer_id主键。这意味着orders表中的每个customer_id都必须在customers表中有对应的记录，或者为NULL。
-3.  函数依赖约束（Functional Dependency Constraint）：
+##### 3.  函数依赖约束（Functional Dependency Constraint）
 •  定义：如果关系数据库中的某个属性集合A的值决定了另一个属性集合B的值，则称B函数依赖于A。
 •  实例：在employees表中，如果department_id决定了manager_id（即同一个部门有同一个经理），则存在函数依赖department_id -> manager_id。
-4.  统计约束（Statistical Constraint）：
+##### 4.  统计约束（Statistical Constraint）
 •  定义：涉及数据的统计特性，如数据的分布、频率等。
 •  实例：可以规定employees表中性别比例，例如男员工和女员工的数量应该大致相等。这种约束可能需要通过统计方法来检查和维护。
 
@@ -209,9 +209,9 @@ CREATE TABLE Teachers (
 #### 动态列级约束
 
 动态列级约束是指在修改列定义或列值时应满足的约束条件。这些约束涉及到数据的更新和变更，确保在数据发生变化时，仍然能够保持数据的完整性和一致性。动态列级约束主要包括以下两个方面：
-1.  修改列定义时的约束：
+##### 1.  修改列定义时的约束
 •  这类约束涉及到当列的定义（如数据类型、大小等）被修改时，必须满足的条件。例如，如果一个列原本允许空值（NULL），在将其修改为不允许空值时，必须确保该列目前已存在的所有值都不是空值，否则这种修改将被拒绝。
-2.  修改列值时的约束：
+##### 2.  修改列值时的约束
 •  这类约束涉及到当列的值被更新时，新值必须满足的条件。例如，可以规定工资调整必须大于或等于原来的工资，或者年龄只能增加不能减少等。
 以下是一些常见的动态列级约束实例：
 实例1：工资调整
@@ -252,24 +252,45 @@ END;
 #### 动态元组约束
 
 动态元组约束是指在修改数据库中某个元组（即行）的值时，需要参照其旧值，并且新旧值之间需要满足某种约束条件。这类约束通常涉及到行级别的数据变化，确保数据的变更符合特定的业务规则或逻辑。以下是常见的动态元组约束和相关实例：
-1.  工资只能增加不能减少：
-•  定义：这种约束确保员工的工资在更新时只能增加不能减少，以反映工资的正常增长。
-•  实例：假设有一个employees表，其中包含employee_id、name和salary列。可以设置一个触发器，当更新salary列时，检查新工资是否大于或等于旧工资，如果不是，则拒绝更新。
+1.  在一个大学的学生选课系统中，有一个名为“课程注册”的表，该表记录了学生的课程注册信息。表中包含字段“学生ID”、“课程ID”、“学期”和“注册状态”。注册状态可以是“已注册”、“已取消”或“已退选”。
+
+**动态元组约束实例**：我们希望确保一旦学生的课程注册状态变为“已注册”，则在同一个学期内，该学生不能再注册同一门课程。此外，一旦课程状态变为“已取消”或“已退选”，则在同一个学期内，该学生不能再次将该课程状态更改为“已注册”。
+
+**SQL实现**：
 
 ```sql
-CREATE TRIGGER CheckSalaryIncrease
-BEFORE UPDATE OF salary ON employees
+CREATE TRIGGER CheckCourseRegistration
+BEFORE INSERT ON CourseRegistrations
 FOR EACH ROW
 BEGIN
-  IF NEW.salary < OLD.salary THEN
-    SIGNAL SQLSTATE '45000'
-    SET MESSAGE_TEXT = 'Salary cannot be decreased.';
-  END IF;
+    -- 检查是否在同一学期内重复注册同一门课程
+    IF (SELECT COUNT(*) FROM CourseRegistrations
+        WHERE 新的.学生ID = CourseRegistrations.学生ID
+        AND 新的.课程ID = CourseRegistrations.课程ID
+        AND 新的.学期 = CourseRegistrations.学期
+        AND CourseRegistrations.注册状态 = '已注册') > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = '在同一学期内不能重复注册同一门课程';
+    END IF;
 END;
 
+CREATE TRIGGER CheckCourseCancellation
+BEFORE UPDATE ON CourseRegistrations
+FOR EACH ROW
+BEGIN
+    -- 检查是否尝试将已取消或已退选的课程重新注册
+    IF (新的.注册状态 = '已注册' AND 旧的.注册状态 IN ('已取消', '已退选')) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = '一旦课程状态为已取消或已退选，在同一学期内不能再次注册';
+    END IF;
+END;
 ```
 
-这个触发器确保了工资不会降低。
+在这个例子中，我们创建了两个触发器：`CheckCourseRegistration` 和 `CheckCourseCancellation`。
+
+1. `CheckCourseRegistration` 触发器在尝试插入新的课程注册记录之前被触发，检查是否在同一学期内重复注册同一门课程。如果是，则发出错误信号阻止插入操作。
+    
+2. `CheckCourseCancellation` 触发器在更新课程注册记录之前被触发，检查是否尝试将已经标记为“已取消”或“已退选”的课程状态更改为“已注册”。如果是，则发出错误信号阻止更新操作。
 2.  课程选修数量更新：
 •  定义：当学生选修一门新课程时，自动更新学生已选课程的总数。
 •  实例：假设有一个students表，其中包含student_id和sum_courses列，以及一个enrollments表，记录学生的课程选修情况。可以设置一个触发器，在enrollments表插入新记录时，自动增加students表中相应学生的sum_courses值。
