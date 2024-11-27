@@ -96,5 +96,14 @@
       ],
       "key": "H"
     }
-  ]
+  ],
+  "editor:set-heading-0": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "7"
+    }
+  ],
+  "workspace:goto-tab-7": []
 }
