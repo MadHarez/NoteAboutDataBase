@@ -225,8 +225,8 @@
 **定义**
 如果对于关系模式  R(A_1, A_2, ..., A_n)  中的任意两个元组  t_1  和  t_2 ，当  t_1  和  t_2  在属性集合  X  上的值相同时，它们在属性集合  Y  上的值也相同，那么我们就说  X  函数决定  Y ，记作  X \rightarrow Y 。
 组成部分
-•  X：决定因素（Determinant），它是一个或一组属性的集合，能够决定另一个属性集合的值。
-•  Y：被决定因素（Dependent），它是被  X  决定的属性集合。
+- X：决定因素（Determinant），它是一个或一组属性的集合，能够决定另一个属性集合的值。
+- Y：被决定因素（Dependent），它是被  X  决定的属性集合。
 **特点**
 1.  非平凡性：如果  X  函数决定  Y ，且  Y  不是  X  的子集，那么这个函数依赖是非平凡的；否则是平凡的。
 2.  传递性：如果  X \rightarrow Y  且  Y \rightarrow Z ，那么  X \rightarrow Z 。
@@ -246,23 +246,23 @@
 让我们通过一个具体的例子来说明属性间的联系如何决定函数依赖关系，以及如何使用依赖图来表示这些函数依赖。
 实例背景
 假设我们有一个大学课程选课系统，需要存储学生信息和课程信息。我们的关系模式如下：
-•  Student(S, SN, MA)
-•  S: 学生ID
-•  SN: 学生姓名
-•  MA: 学生所在系
-•  Course(C, CN, T)
-•  C: 课程ID
-•  CN: 课程名称
-•  T: 教师姓名
+- Student(S, SN, MA)
+- S: 学生ID
+- SN: 学生姓名
+- MA: 学生所在系
+- Course(C, CN, T)
+- C: 课程ID
+- CN: 课程名称
+- T: 教师姓名
 属性间的联系决定函数依赖关系
 1.  Student关系模式：
-•  在Student关系模式中，学生ID（S）是唯一的，可以唯一确定学生的姓名（SN）和所在系（MA）。因此，我们有以下函数依赖：
-•  S → SN
-•  S → MA
+- 在Student关系模式中，学生ID（S）是唯一的，可以唯一确定学生的姓名（SN）和所在系（MA）。因此，我们有以下函数依赖：
+- S → SN
+- S → MA
 2.  Course关系模式：
-•  在Course关系模式中，课程ID（C）是唯一的，可以唯一确定课程名称（CN）和教师姓名（T）。因此，我们有以下函数依赖：
-•  C → CN
-•  C → T
+- 在Course关系模式中，课程ID（C）是唯一的，可以唯一确定课程名称（CN）和教师姓名（T）。因此，我们有以下函数依赖：
+- C → CN
+- C → T
 依赖图表示函数依赖关系
 依赖图是一种图形化工具，用于表示属性间的函数依赖关系。在依赖图中，每个节点代表一个属性，如果存在函数依赖X → Y，则从X指向Y画一条有向边。
 依赖图示例
@@ -278,14 +278,14 @@ C --> T
 在这个图中，C是起点，指向CN和T，表示课程ID决定了课程名称和教师姓名。
 综合依赖图
 如果我们将Student和Course两个关系模式合并到一个更大的关系模式中，比如选课关系模式Enrollment(S, C, G)，其中G是成绩，那么依赖图将更加复杂：
-•  Enrollment(S, C, G)
-•  S: 学生ID
-•  C: 课程ID
-•  G: 成绩
+- Enrollment(S, C, G)
+- S: 学生ID
+- C: 课程ID
+- G: 成绩
 在这个关系模式中，我们可能有以下函数依赖：
-•  S → MA（学生ID决定所在系）
-•  C → T（课程ID决定教师姓名）
-•  S, C → G（学生ID和课程ID共同决定成绩）
+- S → MA（学生ID决定所在系）
+- C → T（课程ID决定教师姓名）
+- S, C → G（学生ID和课程ID共同决定成绩）
 综合依赖图
   S --> MA
   C --> T
@@ -299,59 +299,59 @@ C --> T
 ##### 平凡函数依赖（Trivial Functional Dependency）
 平凡函数依赖是指一个属性集合函数决定它自身，或者一个属性集合函数决定其子集的函数依赖。换句话说，如果函数依赖的右侧（被决定因素）是左侧（决定因素）的子集，那么这个函数依赖就是平凡的。
 定义：
-•  如果  X \rightarrow Y  且  Y \subseteq X ，则称  X \rightarrow Y  是一个平凡函数依赖。
+- 如果  X \rightarrow Y  且  Y \subseteq X ，则称  X \rightarrow Y  是一个平凡函数依赖。
 实例：
 假设有一个关系模式  R(A, B, C) ：
-•   A \rightarrow A  是一个平凡函数依赖，因为任何属性都能决定它自己。
-•   A, B \rightarrow A  也是一个平凡函数依赖，因为决定因素包含了被决定因素  A 。
+-  A \rightarrow A  是一个平凡函数依赖，因为任何属性都能决定它自己。
+-  A, B \rightarrow A  也是一个平凡函数依赖，因为决定因素包含了被决定因素  A 。
 ##### 非平凡函数依赖（Non-Trivial Functional Dependency）
 非平凡函数依赖是指一个属性集合函数决定的不是它自身的属性，也不是其子集的属性。这意味着函数依赖的右侧（被决定因素）不是左侧（决定因素）的子集。
 定义：
-•  如果  X \rightarrow Y  且  Y \not\subseteq X ，则称  X \rightarrow Y  是一个非平凡函数依赖。
+- 如果  X \rightarrow Y  且  Y \not\subseteq X ，则称  X \rightarrow Y  是一个非平凡函数依赖。
 实例：
 假设有一个关系模式  R(A, B, C) ：
-•   A \rightarrow B  是一个非平凡函数依赖，如果  A  的不同值对应  B  的不同值，但  B  不是  A  的子集。
-•   A, B \rightarrow C  也是一个非平凡函数依赖，如果  C  的值由  A  和  B  共同决定，且  C  不是  A  或  B  的子集。
+-  A \rightarrow B  是一个非平凡函数依赖，如果  A  的不同值对应  B  的不同值，但  B  不是  A  的子集。
+-  A, B \rightarrow C  也是一个非平凡函数依赖，如果  C  的值由  A  和  B  共同决定，且  C  不是  A  或  B  的子集。
 相关实例
 让我们通过一个具体的例子来说明平凡和非平凡函数依赖：
 假设有一个关系模式  Student(SNumber, SName, SMajor) ，其中：
-•   SNumber ：学生编号
-•   SName ：学生姓名
-•   SMajor ：学生专业
+-  SNumber ：学生编号
+-  SName ：学生姓名
+-  SMajor ：学生专业
 平凡函数依赖：
-•   SNumber \rightarrow SNumber ：学生编号决定学生编号（自身决定自身）。
-•   SNumber, SName \rightarrow SName ：学生编号和姓名共同决定姓名（被决定因素是决定因素的子集）。
+-  SNumber \rightarrow SNumber ：学生编号决定学生编号（自身决定自身）。
+-  SNumber, SName \rightarrow SName ：学生编号和姓名共同决定姓名（被决定因素是决定因素的子集）。
 非平凡函数依赖：
-•   SNumber \rightarrow SName ：学生编号决定学生姓名（学生的编号不同，姓名也不同）。
-•   SNumber \rightarrow SMajor ：学生编号决定学生专业（学生的编号不同，专业也不同）。
+-  SNumber \rightarrow SName ：学生编号决定学生姓名（学生的编号不同，姓名也不同）。
+-  SNumber \rightarrow SMajor ：学生编号决定学生专业（学生的编号不同，专业也不同）。
 在这个例子中， SNumber \rightarrow SName  和  SNumber \rightarrow SMajor  都是非平凡函数依赖，因为学生编号决定了不是其子集的其他属性。而  SNumber \rightarrow SNumber  和  SNumber, SName \rightarrow SName  是平凡函数依赖，因为它们分别是属性自身决定自身或属性集合决定其子集。
 
 完全函数依赖和部分函数依赖是关系数据库中描述属性间依赖关系的两个重要概念，它们与候选键和主属性的概念紧密相关。
 ##### 完全函数依赖（Full Functional Dependency）
 如果属性集合  X  函数决定属性  Y ，并且  X  的任何真子集都不能函数决定  Y ，则称  Y  完全函数依赖于  X 。
 定义：
-•   Y  完全函数依赖于  X ，记作  X \rightarrow Y ，如果对于关系中的任意两个元组  t_1  和  t_2 ，如果  t_1[X] = t_2[X] ，则  t_1[Y] = t_2[Y] ，并且对于  X  的任何真子集  X' ，都存在  t_1  和  t_2  使得  t_1[X'] = t_2[X']  但  t_1[Y] \neq t_2[Y] 。
+-  Y  完全函数依赖于  X ，记作  X \rightarrow Y ，如果对于关系中的任意两个元组  t_1  和  t_2 ，如果  t_1[X] = t_2[X] ，则  t_1[Y] = t_2[Y] ，并且对于  X  的任何真子集  X' ，都存在  t_1  和  t_2  使得  t_1[X'] = t_2[X']  但  t_1[Y] \neq t_2[Y] 。
 实例：
 假设有一个关系模式  Student(SNumber, SName, Major, Advisor) ，其中：
-•   SNumber ：学生编号
-•   SName ：学生姓名
-•   Major ：专业
-•   Advisor ：导师
+-  SNumber ：学生编号
+-  SName ：学生姓名
+-  Major ：专业
+-  Advisor ：导师
 如果一个学生的专业（Major）完全由学生编号（SNumber）决定，并且没有学生编号的任何真子集能决定专业，则  SNumber  完全函数决定  Major 。
 ##### 部分函数依赖（Partial Functional Dependency）
 如果属性集合  X  函数决定属性  Y ，但  X  的某个真子集也能函数决定  Y ，则称  Y  部分函数依赖于  X 。
 定义：
-•   Y  部分函数依赖于  X ，记作  X \rightarrow Y ，如果存在  X  的一个真子集  X' ，使得对于关系中的任意两个元组  t_1  和  t_2 ，如果  t_1[X'] = t_2[X'] ，则  t_1[Y] = t_2[Y] 。
+-  Y  部分函数依赖于  X ，记作  X \rightarrow Y ，如果存在  X  的一个真子集  X' ，使得对于关系中的任意两个元组  t_1  和  t_2 ，如果  t_1[X'] = t_2[X'] ，则  t_1[Y] = t_2[Y] 。
 实例：
 继续使用上述的  Student(SNumber, SName, Major, Advisor)  关系模式，假设：
-•   SNumber ：学生编号
-•   SName ：学生姓名
-•   Major ：专业
-•   Advisor ：导师
+-  SNumber ：学生编号
+-  SName ：学生姓名
+-  Major ：专业
+-  Advisor ：导师
 如果一个学生的导师（Advisor）由学生的专业（Major）决定，但专业本身不是学生编号的子集，且学生编号的任何真子集都不能决定专业，则  Major  部分函数决定  Advisor 。
 总结
-•  完全函数依赖意味着决定因素  X  的任何真子集都不能决定  Y ， Y  的值完全依赖于  X  的所有属性。
-•  部分函数依赖意味着决定因素  X  中的某个真子集就足以决定  Y ， Y  的值不完全依赖于  X  的所有属性。
+- 完全函数依赖意味着决定因素  X  的任何真子集都不能决定  Y ， Y  的值完全依赖于  X  的所有属性。
+- 部分函数依赖意味着决定因素  X  中的某个真子集就足以决定  Y ， Y  的值不完全依赖于  X  的所有属性。
 在数据库设计中，识别完全函数依赖和部分函数依赖对于规范化过程至关重要，因为它们影响数据库的分解和数据的组织方式。
 
 ##### 传递函数依赖（Transitive Functional Dependency）
@@ -360,9 +360,9 @@ C --> T
 相关实例
 让我们通过一个具体的例子来说明传递函数依赖：
 假设有一个关系模式  Student(Sno, Sdept, Sloc) ，其中：
-•   Sno ：学号
-•   Sdept ：系别
-•   Sloc ：住宿楼号
+-  Sno ：学号
+-  Sdept ：系别
+-  Sloc ：住宿楼号
 在这个关系模式中，我们有以下函数依赖：
 1.   Sno \rightarrow Sdept ：学号决定系别，即每个学生的学号唯一确定其所属的系别。
 2.   Sdept \rightarrow Sloc ：系别决定住宿楼号，即每个系别的学生都被分配到相同的住宿楼号。
@@ -553,20 +553,20 @@ C --> T
 假设我们有一个大学的学生信息系统，需要存储学生信息、课程信息以及学生的选课信息。
 初始关系模式
 最初，我们可能会设计一个关系模式 StudentCourse，它包含以下属性：
-•  StudentID：学生的唯一标识符
-•  StudentName：学生的名字
-•  CourseID：课程的唯一标识符
-•  CourseName：课程的名字
-•  Grade：学生在该课程的成绩
+- StudentID：学生的唯一标识符
+- StudentName：学生的名字
+- CourseID：课程的唯一标识符
+- CourseName：课程的名字
+- Grade：学生在该课程的成绩
 关系模式可以表示为：
 `StudentCourse(StudentID, StudentName, CourseID, CourseName, Grade)`
 
 #### 数据依赖分析
 1.  函数依赖：
-•  StudentID 函数决定 StudentName，即每个学生ID对应一个唯一的学生名字。
-•  CourseID 函数决定 CourseName，即每个课程ID对应一个唯一的课程名字。
+- StudentID 函数决定 StudentName，即每个学生ID对应一个唯一的学生名字。
+- CourseID 函数决定 CourseName，即每个课程ID对应一个唯一的课程名字。
 2.  数据依赖的影响：
-•  根据函数依赖，我们发现 StudentName 依赖于 StudentID，CourseName 依赖于 CourseID。这意味着如果我们将 StudentName 和 CourseName 存储在 StudentCourse 表中，会导致数据冗余，因为对于每个学生和课程，这些信息会被多次重复。
+- 根据函数依赖，我们发现 StudentName 依赖于 StudentID，CourseName 依赖于 CourseID。这意味着如果我们将 StudentName 和 CourseName 存储在 StudentCourse 表中，会导致数据冗余，因为对于每个学生和课程，这些信息会被多次重复。
 规范化后的关系模式
 为了解决这个问题，我们可以将关系模式规范化，将 StudentCourse 分解为三个关系模式：
 1.  Student：
@@ -579,69 +579,69 @@ Course(CourseID, CourseName)
 Enrollment(StudentID, CourseID, Grade)
 
 #### 影响分析
-•  减少数据冗余：通过规范化，我们减少了数据冗余，因为 StudentName 和 CourseName 只在它们各自的表中存储一次。
-•  提高数据完整性：规范化后的关系模式更容易维护数据完整性，因为任何关于学生或课程的更新只需要在一个地方进行。
-•  避免更新异常：在原始的关系模式中，如果添加一个新学生或新课程，我们需要为每个学生的每门课程或每门课程的每个学生添加新行，这可能导致更新异常。规范化后，我们可以轻松地添加新学生或新课程，而不需要修改其他行。
-•  查询优化：虽然规范化可能会增加查询时的连接操作，但它也使得查询优化器可以更有效地使用索引和连接，从而可能提高查询性能。
+- 减少数据冗余：通过规范化，我们减少了数据冗余，因为 StudentName 和 CourseName 只在它们各自的表中存储一次。
+- 提高数据完整性：规范化后的关系模式更容易维护数据完整性，因为任何关于学生或课程的更新只需要在一个地方进行。
+- 避免更新异常：在原始的关系模式中，如果添加一个新学生或新课程，我们需要为每个学生的每门课程或每门课程的每个学生添加新行，这可能导致更新异常。规范化后，我们可以轻松地添加新学生或新课程，而不需要修改其他行。
+- 查询优化：虽然规范化可能会增加查询时的连接操作，但它也使得查询优化器可以更有效地使用索引和连接，从而可能提高查询性能。
 
 ### 如何设计一个合理的关系数据库模式
 好的，让我们通过一个简单的“图书馆管理系统”数据库设计实例，来展示上述步骤的操作。
 **需求分析**
 假设我们需要一个系统来管理图书馆的书籍、读者和借阅信息。
 **概念性设计**
-	•  实体：书籍（Book）、读者（Reader）、借阅（Borrowing）
-	•  关系：
-	•  读者与借阅是一对多关系（一个读者可以借多本书）
-	•  书籍与借阅也是一对多关系（一本书可以被多个读者借阅）
+	- 实体：书籍（Book）、读者（Reader）、借阅（Borrowing）
+	- 关系：
+	- 读者与借阅是一对多关系（一个读者可以借多本书）
+	- 书籍与借阅也是一对多关系（一本书可以被多个读者借阅）
 **确定实体属性**
-	•  书籍（Book）：
-	•  BookID（书籍ID）
-	•  Title（标题）
-	•  Author（作者）
-	•  ISBN（国际标准书号）
-	•  Publisher（出版社）
-	•  Year（出版年份）
-	•  Quantity（库存数量）
-	•  读者（Reader）：
-	•  ReaderID（读者ID）
-	•  Name（姓名）
-	•  Email（电子邮件）
-	•  Phone（电话）
-	•  Address（地址）
-	•  借阅（Borrowing）：
-	•  BorrowingID（借阅ID）
-	•  ReaderID（读者ID）
-	•  BookID（书籍ID）
-	•  BorrowDate（借阅日期）
-	•  ReturnDate（归还日期）
+	- 书籍（Book）：
+	- BookID（书籍ID）
+	- Title（标题）
+	- Author（作者）
+	- ISBN（国际标准书号）
+	- Publisher（出版社）
+	- Year（出版年份）
+	- Quantity（库存数量）
+	- 读者（Reader）：
+	- ReaderID（读者ID）
+	- Name（姓名）
+	- Email（电子邮件）
+	- Phone（电话）
+	- Address（地址）
+	- 借阅（Borrowing）：
+	- BorrowingID（借阅ID）
+	- ReaderID（读者ID）
+	- BookID（书籍ID）
+	- BorrowDate（借阅日期）
+	- ReturnDate（归还日期）
 **定义实体间的关系**
-	•  读者与借阅：一对多
-	•  书籍与借阅：一对多
+	- 读者与借阅：一对多
+	- 书籍与借阅：一对多
 **规范化**
-•  检查是否存在部分函数依赖和传递依赖，并进行分解以满足3NF。
+- 检查是否存在部分函数依赖和传递依赖，并进行分解以满足3NF。
 **确定主键和外键**
-	•  主键：
-		•  Book(BookID)
-		•  Reader(ReaderID)
-		•  Borrowing(BorrowingID)
-	•  外键：
-		•  Borrowing(ReaderID) 引用 Reader(ReaderID)
-		•  Borrowing(BookID) 引用 Book(BookID)
+	- 主键：
+		- Book(BookID)
+		- Reader(ReaderID)
+		- Borrowing(BorrowingID)
+	- 外键：
+		- Borrowing(ReaderID) 引用 Reader(ReaderID)
+		- Borrowing(BookID) 引用 Book(BookID)
 **定义视图**
-	•  创建视图以简化读者借阅信息的查询。
+	- 创建视图以简化读者借阅信息的查询。
 **索引和性能优化**
-	•  对Book.Title、Reader.Name和Borrowing.BorrowDate等字段创建索引。
+	- 对Book.Title、Reader.Name和Borrowing.BorrowDate等字段创建索引。
 **安全性和权限**
-	•  定义权限，确保只有授权的图书馆工作人员可以修改借阅信息。
+	- 定义权限，确保只有授权的图书馆工作人员可以修改借阅信息。
 **实施约束**
-	•  实施实体完整性、参照完整性和域完整性约束。
-	•  创建数据字典，记录所有表、字段、关系和约束的详细信息。
+	- 实施实体完整性、参照完整性和域完整性约束。
+	- 创建数据字典，记录所有表、字段、关系和约束的详细信息。
 **测试和验证**
-	•  测试数据库以确保所有功能正常工作，数据完整性得到维护。
+	- 测试数据库以确保所有功能正常工作，数据完整性得到维护。
 **迭代和维护**
-	•  根据用户反馈和业务需求对数据库进行调整。
+	- 根据用户反馈和业务需求对数据库进行调整。
  **备份和恢复策略**
-	•  制定定期备份计划，并确保有有效的数据恢复流程。
+	- 制定定期备份计划，并确保有有效的数据恢复流程。
 SQL示例
 以下是创建这些表的SQL语句示例：
 ```sql
@@ -1176,19 +1176,19 @@ X = { E }
 
  **函数依赖**
 
-1. (S#,C#)→fG(S#,C#)f​G
+1. (S#,C#)→fG(S#,C#)fG
     
     - 表示学生编号和课程编号共同决定成绩。
 2. S#→SNS#→SN
     
     - 表示学生编号决定学生姓名。
-3. (S#,C#)→pSN(S#,C#)p​SN
+3. (S#,C#)→pSN(S#,C#)pSN
     
     - 表示学生编号和课程编号共同决定学生姓名，这可能是一个错误，因为通常学生姓名由学生编号决定，而不是与课程编号共同决定。
 4. S#→SDS#→SD
     
     - 表示学生编号决定学生所属的系别。
-5. (S#,C#)→pSD(S#,C#)p​SD
+5. (S#,C#)→pSD(S#,C#)pSD
     
     - 表示学生编号和课程编号共同决定学生所属的系别，这也可能是一个错误，因为通常学生所属的系别由学生编号决定。
 6. SD→DMNSD→DMN
