@@ -8,7 +8,7 @@ Co-author：Potmot
 
 [pot-mot (pot-mot)](https://github.com/pot-mot)
 
-Director：GDLoery
+Director：GDLeroy
 
 [GDleroy](https://github.com/GDleroy)
 
